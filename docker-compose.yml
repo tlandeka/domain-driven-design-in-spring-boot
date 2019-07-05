@@ -1,0 +1,19 @@
+version: "2"
+services:
+
+    db:
+      image: mysql:5.7
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: test_db
+      ports:
+        - "9906:3306"
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        links:
+            - db:db
+        ports:
+            - 8000:80
+volumes:
+    persistent:
